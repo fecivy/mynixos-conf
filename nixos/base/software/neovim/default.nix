@@ -132,6 +132,9 @@
         vim.keymap.set({"n"}, "<leader>cs", "<Cmd>:noh<CR>", {})
         vim.keymap.set({"n"}, "<C-/>", "*", {})
         vim.keymap.set({"n"}, "<C-S-/>", "#", {})
+
+        vim.keymap.set({"n"}, "<leader>fs", function() vim.lsp.buf.format() end, {})
+
     '';
   };
 }

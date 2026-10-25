@@ -1,0 +1,23 @@
+{
+  "nodes": {
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1780145889,
+        "narHash": "sha256-md0zn0RnwNvPyASas1yG5YUuwQ4ALA6ucL50l0DvqCo=",
+        "type": "tarball",
+        "url": "file:///etc/nixos/local-source/nixpkgs-26.05.tar.gz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "file:///etc/nixos/local-source/nixpkgs-26.05.tar.gz"
+      }
+    },
+    "root": {
+      "inputs": {
+        "nixpkgs": "nixpkgs"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}

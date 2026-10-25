@@ -1,0 +1,128 @@
+global {
+  wan_interface: auto 
+
+  log_level: info
+  allow_insecure: false
+  auto_config_kernel_parameter: true
+}
+
+subscription {
+    wormhole: 'https://wormhole.dockingstation-593a.top/sub?token=a808b8bb02fde165b6b4175c587fec39'
+}
+
+node {
+    cqupt: 'socks5://localhost:1080'
+}
+
+dns {
+  upstream {
+    googledns: 'tcp+udp://dns.google:53'
+    alidns: 'udp://dns.alidns.com:53'
+  }
+# routing {
+#   request {
+#     qtype(https) -> reject
+#    fallback: alidns
+#   }
+#   response {
+#     upstream(googledns) -> accept
+#     ip(geoip:private) && !qname(geosite:cn) -> googledns
+#     fallback: accept
+#   }
+# }
+
+  routing {
+    request {
+      qname(geosite:cn) -> alidns
+      fallback: googledns
+    }
+  }
+
+}
+
+group {
+  proxy {
+   filter: !name(cqupt)
+   policy: fixed(2)
+#   policy: min_moving_avg
+  }
+
+  cqupt {
+    filter: name(cqupt)
+    policy: fixed(0)
+  }
+}
+
+routing {
+  pname(NetworkManager) -> direct
+  dip(224.0.0.0/3, 'ff00::/8') -> direct
+
+  domain(suffix: github.com) -> proxy
+  domain(suffix: githubusercontent.com) -> proxy
+  domain(suffix: githubassets.com) -> proxy
+  domain(suffix: discordapp.net) -> proxy
+  domain(suffix: discord.gg) -> proxy
+  domain(suffix: cloudflare.com) -> proxy
+  domain(suffix: github.io) -> proxy
+  domain(suffix: firefox.com) -> direct
+  domain(suffix: googleapis.com) -> proxy
+  domain(suffix: gstatic.com) -> proxy
+  domain(suffix: steampowered.com) -> proxy
+  domain(suffix: steamcommunity.com) -> proxy
+  domain(suffix: steamstatic.com) -> proxy
+  domain(suffix: web.archive.org) -> proxy
+  domain(suffix: discord.com) -> proxy
+  domain(suffix: discordapp.com) -> proxy
+  domain(suffix: discordapp.net) -> proxy
+  domain(suffix: google.com) -> proxy
+  domain(suffix: youtube.com) -> proxy
+  domain(suffix: doubleclick.net) -> proxy
+  domain(suffix: googlevideo.com) -> proxy
+  domain(suffix: ytimg.com) -> proxy
+  domain(suffix: ggpht.com) -> proxy
+  domain(suffix: googleusercontent.com) -> proxy
+  domain(suffix: linux.do) -> proxy
+  domain(suffix: minecraftservices.com) -> proxy
+  domain(suffix: 225284.xyz) -> proxy
+  domain(suffix: hypixel.net) -> proxy
+  domain(suffix: google.cn) -> proxy
+  domain(suffix: android.com) -> proxy
+  domain(suffix: wikipedia.org) -> proxy
+  domain(keyword: z-lib) -> proxy
+  domain(keyword: z-library) -> proxy
+  domain(suffix: workers.dev) -> proxy
+  domain(suffix: spice-space.org) -> proxy
+  domain(suffix: fedorapeople.org) -> proxy
+  domain(suffix: spotify.com) -> proxy
+  domain(suffix: spotifycdn.com) -> proxy
+  domain(suffix: browserleaks.com) -> proxy
+  domain(suffix: cleanipcdn.com) -> proxy
+  domain(suffix: loverslab.com) -> proxy
+  domain(suffix: lewd.ninja) -> proxy
+  domain(suffix: mega.nz) -> proxy
+  domain(suffix: mega.co.nz) -> proxy
+  domain(suffix: gofile.io) -> proxy
+  domain(suffix: workupload.com) -> proxy
+  domain(suffix: vik1ngfile.site) -> proxy
+  domain(suffix: vikingfile.site) -> proxy
+  domain(suffix: vikingfile.com) -> proxy
+  domain(suffix: polyfrost.org) -> proxy
+  domain(suffix: nixos.org) -> proxy
+  domain(suffix: docker.io) -> proxy
+  domain(suffix: docker.com) -> proxy
+  domain(suffix: ea.com) -> proxy
+  domain(suffix: hexo.io) -> proxy
+  domain(suffix: vercel.app) -> proxy
+
+  pname(zju-connect) -> direct
+#  domain(suffix: cqupt.edu.cn) -> cqupt
+  domain(suffix: aigrading.110-lab.cn) -> cqupt
+
+  # disable h3
+  l4proto(udp) && dport(443) -> block
+  dip(geoip:private) -> direct
+  dip(geoip:cn) -> direct
+  domain(geosite:cn) -> direct
+
+  fallback: direct
+}

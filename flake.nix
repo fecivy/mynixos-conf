@@ -9,6 +9,9 @@
 
         let
             s = builtins.readFile ./host;
+        in
+
+        let
             host = builtins.substring 0 ((builtins.stringLength s) - 1) s;
         in
 

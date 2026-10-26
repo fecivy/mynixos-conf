@@ -13,6 +13,7 @@
 
     networking.networkmanager.enable = true;
     networking.hostName = host;
+    networking.nftables.enable = true;
 
     time.timeZone = "Asia/Shanghai";
 

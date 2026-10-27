@@ -37,6 +37,14 @@
                 ];
             };
 
+            installer = nixpkgs.lib.nixosSystem {
+                modules = [
+                    "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
+                    ./nixos/base
+                    ./installer
+                ];
+            };
+
         };
 
 }

@@ -113,6 +113,7 @@ routing {
   domain(suffix: ea.com) -> proxy
   domain(suffix: hexo.io) -> proxy
   domain(suffix: vercel.app) -> proxy
+  domain(suffix: huggingface.co) -> proxy
 
   pname(zju-connect) -> direct
 #  domain(suffix: cqupt.edu.cn) -> cqupt

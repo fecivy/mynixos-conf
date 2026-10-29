@@ -7,7 +7,6 @@
         ./easytier
         ./git
         ./keyd
-        ./ly
         ./neovim
         ./yazi
     ];

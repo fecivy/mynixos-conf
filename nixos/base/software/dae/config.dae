@@ -43,7 +43,7 @@ dns {
 group {
   proxy {
    filter: !name(cqupt)
-   policy: fixed(2)
+   policy: fixed(1)
 #   policy: min_moving_avg
   }
 
@@ -113,6 +113,12 @@ routing {
   domain(suffix: ea.com) -> proxy
   domain(suffix: hexo.io) -> proxy
   domain(suffix: vercel.app) -> proxy
+  domain(suffix: huggingface.co) -> proxy
+  domain(suffix: chatgpt.com) -> proxy
+  domain(suffix: openai.com) -> proxy
+  domain(suffix: cloudflareinsights.com) -> proxy
+  domain(suffix: statsigapi.net) -> proxy
+  domain(suffix: oaistatic.com) -> proxy
 
   pname(zju-connect) -> direct
 #  domain(suffix: cqupt.edu.cn) -> cqupt

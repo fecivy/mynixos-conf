@@ -4,5 +4,6 @@
         ./niri
         ./pipewire
         ./virtualbox
+        ./ly
     ];
 }

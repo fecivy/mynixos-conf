@@ -6,7 +6,6 @@
         allowPing = true;
         package = pkgs.nftables;
         backend = "nftables";
-        allowedTCPPorts = [ 22 80 ];
-        allowedUDPPorts = [ 53 ];
+        allowedTCPPorts = [ 80 443 10027 ];
     };
 }

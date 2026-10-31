@@ -119,6 +119,7 @@ routing {
   domain(suffix: cloudflareinsights.com) -> proxy
   domain(suffix: statsigapi.net) -> proxy
   domain(suffix: oaistatic.com) -> proxy
+  domain(suffix: fandom.com) -> proxy
 
   pname(zju-connect) -> direct
 #  domain(suffix: cqupt.edu.cn) -> cqupt

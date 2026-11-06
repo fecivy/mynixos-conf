@@ -43,8 +43,8 @@ dns {
 group {
   proxy {
    filter: !name(cqupt)
-   policy: fixed(1)
-#   policy: min_moving_avg
+   policy: fixed(0)
+#  policy: min_moving_avg
   }
 
   cqupt {
@@ -120,9 +120,14 @@ routing {
   domain(suffix: statsigapi.net) -> proxy
   domain(suffix: oaistatic.com) -> proxy
   domain(suffix: fandom.com) -> proxy
+  domain(suffix: modrinth.com) -> proxy
+  domain(suffix: golang.org) -> proxy
+  domain(suffix: opentelemetry.io) -> proxy
+  domain(suffix: cel.dev) -> proxy
+  domain(suffix: modernc.org) -> proxy
 
   pname(zju-connect) -> direct
-#  domain(suffix: cqupt.edu.cn) -> cqupt
+  domain(suffix: cqupt.edu.cn) -> cqupt
   domain(suffix: aigrading.110-lab.cn) -> cqupt
 
   # disable h3

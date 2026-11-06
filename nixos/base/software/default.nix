@@ -4,7 +4,6 @@
     imports =
     [
         ./dae
-        ./easytier
         ./git
         ./keyd
         ./neovim

@@ -1,0 +1,42 @@
+instance_name = "mesh-p0xll"
+instance_id = "ac3ebdb8-c6c5-4130-a990-818f1b35e5c8"
+
+ipv6_public_addr_auto = true
+dhcp = true
+
+listeners = [
+    "tcp://0.0.0.0:10300",
+    "udp://0.0.0.0:10300",
+    "ws://0.0.0.0:10301/",
+    "wss://0.0.0.0:10302/",
+    "quic://0.0.0.0:10303",
+]
+
+[network_identity]
+network_name = "mesh-p0xll"
+network_secret = "6u25kIRBQ1/evb/xD3Tb/esVfnGHZWbGnRanqGoBGWQ="
+
+[flags]
+enable_kcp_proxy = true
+enable_quic_proxy = true
+latency_first = true
+lazy_p2p = true
+need_p2p = true
+p2p_only = true
+private_mode = true
+
+
+[[peer]]
+uri = "tcp://bridge.dockingstation-593a.top:10300"
+
+[[peer]]
+uri = "udp://bridge.dockingstation-593a.top:10300"
+
+[[peer]]
+uri = "ws://bridge.dockingstation-593a.top:10301/"
+
+[[peer]]
+uri = "wss://bridge.dockingstation-593a.top:10302/"
+
+[[peer]]
+uri = "quic://bridge.dockingstation-593a.top:10303"

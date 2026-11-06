@@ -5,5 +5,6 @@
         ./pipewire
         ./virtualbox
         ./ly
+        ./easytier
     ];
 }

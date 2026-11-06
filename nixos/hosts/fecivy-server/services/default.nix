@@ -1,10 +1,10 @@
 {
     imports = [
-        ./donetick
-        ./gitea
-        ./glance
+        # ./donetick
+        # ./gitea
+        # ./glance
         ./nginx
-        ./openlist
-        ./rsshub
+        # ./openlist
+        # ./rsshub
     ];
 }

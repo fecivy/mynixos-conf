@@ -6,5 +6,6 @@
         ./nginx
         # ./openlist
         # ./rsshub
+        ./mumur
     ];
 }
